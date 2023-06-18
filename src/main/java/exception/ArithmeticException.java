@@ -1,4 +1,4 @@
-package uk.ac.manchester.tornado.examples.exception;
+package exception;
 
 import uk.ac.manchester.tornado.api.ImmutableTaskGraph;
 import uk.ac.manchester.tornado.api.TaskGraph;
@@ -13,6 +13,9 @@ import java.util.Arrays;
  * a: [1, 1, 1, 1, 1, 1, 1, 1]
  * b: [0, 0, 0, 0, 0, 0, 0, 0]
  * c: [2147483647, 2147483647, 2147483647, 2147483647, 2147483647, 2147483647, 2147483647, 2147483647]
+ *
+ *  * Currently, the plugins can only do the static inspections and cannot detect whether the method throws
+ *  * an exception at runtime. So the plugins will not report any problems.
  */
 public class ArithmeticException {
     public static void add(int[] a, int[] b, int[] c) {

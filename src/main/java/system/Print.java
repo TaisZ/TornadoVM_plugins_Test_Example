@@ -1,5 +1,6 @@
-package dynamicallocation;
+package system;
 
+import exception.IndexException;
 import uk.ac.manchester.tornado.api.ImmutableTaskGraph;
 import uk.ac.manchester.tornado.api.TaskGraph;
 import uk.ac.manchester.tornado.api.TornadoExecutionPlan;
@@ -9,13 +10,15 @@ import uk.ac.manchester.tornado.api.enums.DataTransferMode;
 import java.util.Arrays;
 
 /**
- * Currently, TornadoVM cannot detect dynamic allocation behavior, so this example cannot be detected
+ * TornadoVM does not support the method call from System class, the program will cause stuck
+ * The Plugin will report the println() as an ERROR
  */
-public class ArraySort {
+
+public class Print {
     public static void add(int[] a, int[] b, int[] c) {
-        Arrays.sort(a);
         for (@Parallel int i = 0; i < c.length; i++) {
             c[i] = a[i] + b[i];
+            System.out.println(c[i]);
         }
     }
 
@@ -32,7 +35,7 @@ public class ArraySort {
 
         TaskGraph taskGraph = new TaskGraph("s0") //
                 .transferToDevice(DataTransferMode.FIRST_EXECUTION, a, b) //
-                .task("t0", ArraySort::add, a, b, c) //
+                .task("t0", IndexException::add, a, b, c) //
                 .transferToHost(DataTransferMode.EVERY_EXECUTION, c);
 
         ImmutableTaskGraph immutableTaskGraph = taskGraph.snapshot();
@@ -44,3 +47,4 @@ public class ArraySort {
         System.out.println("c: " + Arrays.toString(c));
     }
 }
+

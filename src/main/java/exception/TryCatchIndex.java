@@ -1,4 +1,4 @@
-package uk.ac.manchester.tornado.examples.exception;
+package exception;
 
 import uk.ac.manchester.tornado.api.ImmutableTaskGraph;
 import uk.ac.manchester.tornado.api.TaskGraph;
@@ -11,11 +11,12 @@ import java.util.Arrays;
 
 /**
  * The for loop will throw a ArraylndexOutOfBoundException and will be handled.
- * TornadoVM output:
+ * However, TornadoVM output:
  * a: [1, 1, 1, 1, 1, 1, 1, 1]
  * b: [2, 2, 2, 2, 2, 2, 2, 2]
  * c: [3, 3, 3, 3, 3, 3, 3, 3]
- * The kernel code shows that the openCL code does not have any exception handle mechanism
+ * TornadoVM ignore the code block in the Catch statement and will not handle the potential exceptions.
+ * Plugins will give a warning to Try/Catch statements in this example.
  */
 public class TryCatchIndex {
     public static void add(int[] a, int[] b, int[] c){
@@ -23,7 +24,9 @@ public class TryCatchIndex {
             for (@Parallel int i = 0; i < c.length + 1; i++) {
                 c[i] = a[i] + b[i];
             }
-        }catch (Exception ignored){}
+        }catch (Exception ignored){
+            c[0] = 0;
+        }
     }
 
     public static void main(String[] args) {

@@ -13,5 +13,24 @@
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-    
+    <repositories>
+        <repository>
+            <id>universityOfManchester-graal</id>
+            <url>https://raw.githubusercontent.com/beehive-lab/tornado/maven-tornadovm</url>
+        </repository>
+    </repositories>
+
+    <dependencies>
+        <dependency>
+            <groupId>tornado</groupId>
+            <artifactId>tornado-api</artifactId>
+            <version>0.15.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>tornado</groupId>
+            <artifactId>tornado-matrices</artifactId>
+            <version>0.15.1</version>
+        </dependency>
+    </dependencies>
 </project>

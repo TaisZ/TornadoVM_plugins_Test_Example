@@ -1,4 +1,4 @@
-package uk.ac.manchester.tornado.examples.exception;
+package exception;
 
 import uk.ac.manchester.tornado.api.ImmutableTaskGraph;
 import uk.ac.manchester.tornado.api.TaskGraph;
@@ -10,10 +10,13 @@ import java.util.Arrays;
 
 /**
  * The for loop will throw a ArraylndexOutOfBoundException
- * TornadoVM ingored the exception:
+ * TornadoVM ingored the exception and output:
  * a: [1, 1, 1, 1, 1, 1, 1, 1]
  * b: [2, 2, 2, 2, 2, 2, 2, 2]
  * c: [3, 3, 3, 3, 3, 3, 3, 3]
+ *
+ * Currently, the plugins can only do the static inspections and cannot detect whether the method throws
+ * an exception at runtime. So the plugins will not report any problems.
  */
 public class IndexException {
     public static void add(int[] a, int[] b, int[] c) {

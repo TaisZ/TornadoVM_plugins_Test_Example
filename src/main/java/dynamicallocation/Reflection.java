@@ -1,4 +1,4 @@
-package uk.ac.manchester.tornado.examples.dynamicallocation;
+package dynamicallocation;
 
 import uk.ac.manchester.tornado.api.ImmutableTaskGraph;
 import uk.ac.manchester.tornado.api.TaskGraph;
@@ -14,6 +14,8 @@ import java.util.Arrays;
  * java.util.concurrent.ExecutionException:
  * uk.ac.manchester.tornado.api.exceptions.TornadoBailoutRuntimeException:
  * Unable to build sketch for method: getCallerClass(Cannot read the array length because "this.code" is null)
+ *
+ * Currently, TornadoVM cannot detect dynamic allocation behavior, so this example cannot be detected
  */
 
 public class Reflection {

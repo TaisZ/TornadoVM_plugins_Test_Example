@@ -1,4 +1,4 @@
-package uk.ac.manchester.tornado.examples.dynamicallocation;
+package dynamicallocation;
 
 import uk.ac.manchester.tornado.api.ImmutableTaskGraph;
 import uk.ac.manchester.tornado.api.TaskGraph;
@@ -12,6 +12,8 @@ import java.util.Arrays;
  * java.util.concurrent.ExecutionException:
  * uk.ac.manchester.tornado.api.exceptions.TornadoBailoutRuntimeException:
  * Unable to build sketch for method: clone(Cannot read the array length because "this.code" is null)
+ *
+ * Currently, TornadoVM cannot detect dynamic allocation behavior, so this example cannot be detected
  */
 public class Clone {
     public static void add(int[] a, int[] b, int[] c) {

@@ -1,16 +1,17 @@
-package uk.ac.manchester.tornado.examples.exception;
+package exception;
 
 import uk.ac.manchester.tornado.api.ImmutableTaskGraph;
 import uk.ac.manchester.tornado.api.TaskGraph;
 import uk.ac.manchester.tornado.api.TornadoExecutionPlan;
 import uk.ac.manchester.tornado.api.annotations.Parallel;
 import uk.ac.manchester.tornado.api.enums.DataTransferMode;
-import uk.ac.manchester.tornado.examples.arrays.ArrayAddInt;
 
 import java.util.Arrays;
 
 /**
- * TornadoVM works fine if only try catch statement is used without any possibility of throwing exception
+ * TornadoVM ignore the code block in the Catch statement and will not handle the potential exceptions.
+ * Plugins will give a warning to Try/Catch statements.Even though, in this example,
+ * the program will not throw any exceptions
  */
 public class TryCatch {
     public static void add(int[] a, int[] b, int[] c) {
