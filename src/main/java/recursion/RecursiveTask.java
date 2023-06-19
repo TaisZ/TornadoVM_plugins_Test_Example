@@ -6,9 +6,11 @@ import uk.ac.manchester.tornado.api.TornadoExecutionPlan;
 import uk.ac.manchester.tornado.api.annotations.Parallel;
 import uk.ac.manchester.tornado.api.enums.DataTransferMode;
 
+import java.util.Arrays;
+
 public class RecursiveTask {
-    public static void recursion(int a, int b){
-        if(a == 0) b += 1;
+    public static void recursion(int a, int[] b){
+        if(a == 0) b[0] += 1;
 
         for (@Parallel int i = 0; i<a; i++){
             recursion(a-1, b);
@@ -17,7 +19,8 @@ public class RecursiveTask {
 
     public static void main(String[] args) {
         int a = 3;
-        int b = 0;
+        int[] b = new int[1];
+        Arrays.fill(b,0);
 
         TaskGraph taskGraph = new TaskGraph("s0") //
                 .transferToDevice(DataTransferMode.FIRST_EXECUTION, a) //
